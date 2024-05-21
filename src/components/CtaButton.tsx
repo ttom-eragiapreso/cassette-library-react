@@ -20,7 +20,7 @@ const CtaButton: React.FC<CtaButtonProps> = (props) => {
 
   return (
     <button
-      className="flex my-4 text-3xl text font-bold items-center border-red-600 border-2 p-3 rounded-lg bg-orange-400/80 hover:bg-orange-400"
+      className="flex my-16 text-3xl text font-bold items-center border-red-600 border-2 p-3 rounded-lg bg-orange-400/80 hover:bg-orange-400"
       onClick={ctaFunction}>
       {isIconProps(props) && props.iconPosition === "before" && props.icon}
       {text}

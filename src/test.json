@@ -1,0 +1,113 @@
+{
+  "data": {
+      "pagination": {
+          "page": 1,
+          "pages": 2,
+          "per_page": 50,
+          "items": 82,
+          "urls": {
+              "last": "https://api.discogs.com/database/search?token=HWiFdStcHwaqgBqEAoEjjvCFhQUNnZHqZFuelXuZ&release_title=stadium+arcadium&page=2&per_page=50",
+              "next": "https://api.discogs.com/database/search?token=HWiFdStcHwaqgBqEAoEjjvCFhQUNnZHqZFuelXuZ&release_title=stadium+arcadium&page=2&per_page=50"
+          }
+      },
+      "results": [
+          {
+              "country": "China",
+              "year": "2006",
+              "format": [
+                  "CD",
+                  "Album"
+              ],
+              "label": [
+                  "Polydor",
+                  "Polydor",
+                  "Polydor",
+                  "The Mansion",
+                  "Akademie Mathematique Of Philosophical Sound Research",
+                  "The Center For The Cultivation Of The Invisible",
+                  "Little Kicker Sound",
+                  "The Pass",
+                  "Punkerpad West",
+                  "Sony Mastering"
+              ],
+              "type": "release",
+              "genre": [
+                  "Rock"
+              ],
+              "style": [
+                  "Alternative Rock",
+                  "Funk Metal"
+              ],
+              "id": 20488972,
+              "barcode": [
+                  "7 25684 79624 6",
+                  "725684796246"
+              ],
+              "user_data": {
+                  "in_wantlist": false,
+                  "in_collection": false
+              },
+              "master_id": 38645,
+              "master_url": "https://api.discogs.com/masters/38645",
+              "uri": "/release/20488972-Red-Hot-Chili-Peppers-Stadium-Arcadium",
+              "catno": "506-1361",
+              "title": "Red Hot Chili Peppers - Stadium Arcadium",
+              "thumb": "https://i.discogs.com/62PtgYkU4QJW5jZfw2IQH1aU-xAbEqCBcYPfvGrMmlo/rs:fit/g:sm/q:40/h:150/w:150/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTIwNDg4/OTcyLTE2NDMwNzM4/NDgtNjM4MS5qcGVn.jpeg",
+              "cover_image": "https://i.discogs.com/RSWO0Un-mD_X5uso1OQvzAH8uvt8mjoLkChohBMEUWg/rs:fit/g:sm/q:90/h:539/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTIwNDg4/OTcyLTE2NDMwNzM4/NDgtNjM4MS5qcGVn.jpeg",
+              "resource_url": "https://api.discogs.com/releases/20488972",
+              "community": {
+                  "want": 48,
+                  "have": 2
+              },
+              "format_quantity": 2,
+              "formats": [
+                  {
+                      "name": "CD",
+                      "qty": "2",
+                      "text": "Digipak, DTS",
+                      "descriptions": [
+                          "Album"
+                      ]
+                  }
+              ]
+          }
+      ]
+  },
+  "status": 200,
+  "statusText": "",
+  "headers": {
+      "cache-control": "public, must-revalidate",
+      "content-language": "it",
+      "content-type": "application/json"
+  },
+  "config": {
+      "transitional": {
+          "silentJSONParsing": true,
+          "forcedJSONParsing": true,
+          "clarifyTimeoutError": false
+      },
+      "adapter": [
+          "xhr",
+          "http"
+      ],
+      "transformRequest": [
+          null
+      ],
+      "transformResponse": [
+          null
+      ],
+      "timeout": 0,
+      "xsrfCookieName": "XSRF-TOKEN",
+      "xsrfHeaderName": "X-XSRF-TOKEN",
+      "maxContentLength": -1,
+      "maxBodyLength": -1,
+      "env": {},
+      "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "User-Agent": "foo/3.0"
+      },
+      "method": "get",
+      "url": "https://api.discogs.com/database/search?token=HWiFdStcHwaqgBqEAoEjjvCFhQUNnZHqZFuelXuZ&release_title=stadium arcadium"
+  },
+  "request": {}
+}

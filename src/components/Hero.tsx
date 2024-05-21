@@ -12,7 +12,7 @@ const ctaAction = () => {
 
 const Hero: React.FC<HeroProps> = ({ ctaText }) => {
   return (
-    <div className="border border-black rounded-lg px-4 py-52 bg-sky-600/60 flex flex-col items-center justify-center">
+    <div className="border border-black rounded-lg px-4 py-52 bg-sky-600/60 flex flex-col items-center justify-center shadow-xl shadow-slate-700">
       <p className="text-8xl text-center">{ctaText}</p>
       <CtaButton
         ctaFunction={ctaAction}
