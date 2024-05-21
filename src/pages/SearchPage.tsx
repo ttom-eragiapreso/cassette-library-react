@@ -19,14 +19,11 @@ const SearchPage = () => {
       .then((response: AxiosResponse<ApiResponseSubset>) => {
         setResults(response.data.results);
         setPagination(response.data.pagination);
+        // the reason why the logs weren't working in the finally block is that state change is not immediate but it's scheduled.
       })
       .catch((error: any) => {
         console.log(error);
-      })
-      .finally(() => {
-        // not sure why results and pagination are empty if I log them here
-      }
-    );
+      });
   }
   return (
   <div className="h-screen bg-teal-400/75 flex justify-center items-center">
