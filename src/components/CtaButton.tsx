@@ -2,6 +2,7 @@ import { ReactElement } from "react";
 
 interface BaseProps {
   text: string;
+  ctaFunction: () => void;
 }
 
 interface IconProps {
@@ -13,11 +14,14 @@ type CtaButtonProps = BaseProps & (IconProps | {});
 
 const CtaButton: React.FC<CtaButtonProps> = (props) => {
   const { text } = props;
+  const { ctaFunction } = props;
   const isIconProps = (props: CtaButtonProps): props is BaseProps & IconProps =>
     "icon" in props && "iconPosition" in props;
 
   return (
-    <button className="flex">
+    <button
+      className="flex my-4 text-3xl text font-bold items-center border-red-600 border-2 p-3 rounded-lg bg-orange-400/80 hover:bg-orange-400"
+      onClick={ctaFunction}>
       {isIconProps(props) && props.iconPosition === "before" && props.icon}
       {text}
       {isIconProps(props) && props.iconPosition === "after" && props.icon}
