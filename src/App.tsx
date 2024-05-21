@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import MainLayout from "./layouts/MainLayout";
 import LandingPage from "./pages/LandingPage";
+import SearchPage from "./pages/SearchPage";
 
 const App = () => {
   const discogsToken: string = "HWiFdStcHwaqgBqEAoEjjvCFhQUNnZHqZFuelXuZ";
@@ -21,6 +22,10 @@ const App = () => {
         <Route
           index
           element={<LandingPage />}
+        />
+        <Route
+          path="/search"
+          element={<SearchPage />}
         />
       </Route>
     )
