@@ -1,5 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 import { useState } from "react";
+import { FaSearch } from "react-icons/fa";
+import Button from "../components/Button";
 import RecordCard from "../components/RecordCard";
 
 const SearchPage = () => {
@@ -29,7 +31,12 @@ const SearchPage = () => {
   };
   return (
     <div className="h-screen bg-teal-400/75 flex justify-center items-center">
-      <button onClick={doSearch}>Try</button>
+      <Button
+        text="Try!"
+        icon={<FaSearch />}
+        iconPosition="after"
+        ctaFunction={doSearch}
+      />
       <input
         type="text"
         placeholder="Search by release title"

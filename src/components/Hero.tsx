@@ -1,6 +1,6 @@
 import React from "react";
 import { FaAddressBook } from "react-icons/fa6";
-import CtaButton from "./CtaButton";
+import CtaButton from "./Button";
 
 interface HeroProps {
   ctaText: string;

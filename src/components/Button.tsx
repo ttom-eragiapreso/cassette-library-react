@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 
 interface BaseProps {
   text: string;
-  ctaFunction: () => void;
+  ctaFunction?: () => void;
 }
 
 interface IconProps {
@@ -20,7 +20,7 @@ const CtaButton: React.FC<CtaButtonProps> = (props) => {
 
   return (
     <button
-      className="flex my-16 text-3xl text font-bold items-center border-red-600 border-2 p-3 rounded-lg bg-orange-400/80 hover:bg-orange-400"
+      className="flex my-16 text-3xl text font-bold items-center border-red-600 border-2 p-3 rounded-lg"
       onClick={ctaFunction}>
       {isIconProps(props) && props.iconPosition === "before" && props.icon}
       {text}
