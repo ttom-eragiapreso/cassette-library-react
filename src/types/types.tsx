@@ -8,6 +8,7 @@ type Result = {
   title: string;
   year: string;
   country: string;
+  thumb: string;
 };
 
 type Pagination = {
@@ -16,7 +17,6 @@ type Pagination = {
   per_page: number;
   items: number;
 };
-
 
 type ApiResponseSubset = {
   pagination: Pagination;

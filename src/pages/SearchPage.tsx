@@ -1,20 +1,22 @@
 import axios, { AxiosResponse } from "axios";
 import { useState } from "react";
+import RecordCard from "../components/RecordCard";
 
 const SearchPage = () => {
   const discogsToken: string = "HWiFdStcHwaqgBqEAoEjjvCFhQUNnZHqZFuelXuZ";
   const releaseTitle: string = "stadium arcadium";
-  const baseCall: string = `https://api.discogs.com/database/search?token=${discogsToken}&release_title=${releaseTitle}`;
+  const baseCall: string = `https://api.discogs.com/database/search?token=${discogsToken}&release_title=`;
 
   const [results, setResults] = useState<Result[]>([]);
   const [pagination, setPagination] = useState<Pagination>({} as Pagination);
-  
+  const [searchTerm, setSearchTerm] = useState<string>("");
+
   const doSearch = (): void => {
     axios
-      .get<ApiResponseSubset>(baseCall, {
+      .get<ApiResponseSubset>(baseCall + searchTerm, {
         headers: {
-          "User-Agent": "foo/3.0"
-        }
+          "User-Agent": "foo/3.0",
+        },
       })
       .then((response: AxiosResponse<ApiResponseSubset>) => {
         setResults(response.data.results);
@@ -24,12 +26,30 @@ const SearchPage = () => {
       .catch((error: any) => {
         console.log(error);
       });
-  }
+  };
   return (
-  <div className="h-screen bg-teal-400/75 flex justify-center items-center">
-    <button onClick={doSearch}>Try</button>
-    <p>Page: {pagination.page} of {pagination.pages}</p>
-  </div>
-);
+    <div className="h-screen bg-teal-400/75 flex justify-center items-center">
+      <button onClick={doSearch}>Try</button>
+      <input
+        type="text"
+        placeholder="Search by release title"
+        value={searchTerm}
+        onKeyUp={(e) => {
+          if (e.key === "Enter") doSearch();
+        }}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
+      <div className="flex flex-wrap">
+        {results.map((result: Result) => {
+          return (
+            <RecordCard
+              key={result.id}
+              {...result}
+            />
+          );
+        })}
+      </div>
+    </div>
+  );
 };
 export default SearchPage;
