@@ -23,3 +23,8 @@ type ApiResponseSubset = {
   results: Array<Result>;
   status: number;
 };
+
+interface SearchBarProps {
+  setResults: React.Dispatch<React.SetStateAction<Result[]>>;
+  setPagination: React.Dispatch<React.SetStateAction<Pagination>>;
+}
