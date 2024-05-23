@@ -6,18 +6,18 @@ import Button from "./Button";
 const SearchBar: React.FC<SearchBarProps> = ({ setResults, setPagination }) => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const discogsToken: string = "HWiFdStcHwaqgBqEAoEjjvCFhQUNnZHqZFuelXuZ";
-  const baseCall: string = "https://api.discogs.com/database/search";
+  const baseEndpoint: string = "https://api.discogs.com/database/search";
 
   const doSearch = (): void => {
     axios
-      .get<ApiResponseSubset>(baseCall + searchTerm, {
+      .get<ApiResponseSubset>(baseEndpoint, {
         headers: {
-          "User-Agent": "foo/3.0",
+          "User-Agent": "foo/3.0"
         },
         params: {
           token: discogsToken,
-          release_title: searchTerm,
-        },
+          release_title: searchTerm
+        }
       })
       .then((response: AxiosResponse<ApiResponseSubset>) => {
         setResults(response.data.results);

@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 
 interface BaseProps {
   text: string;
-  actionFunction?: (searchTerm: string) => void;
+  actionFunction?: () => void;
 }
 
 interface IconProps {

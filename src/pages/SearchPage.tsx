@@ -7,12 +7,12 @@ const SearchPage = () => {
   const [pagination, setPagination] = useState<Pagination>({} as Pagination);
 
   return (
-    <div className="h-screen bg-teal-400/75 flex justify-center items-center">
+    <div className="h-screen bg-teal-400/75 flex flex-col justify-center items-center">
       <SearchBar
         setPagination={setPagination}
         setResults={setResults}
       />
-      <div className="flex flex-wrap">
+      <div className="grid grid-cols-6 gap-4">
         {results.map((result: Result) => {
           return (
             <RecordCard
