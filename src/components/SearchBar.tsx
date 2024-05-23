@@ -4,7 +4,9 @@ import { FaSearch } from "react-icons/fa";
 import Button from "./Button";
 
 const SearchBar: React.FC<SearchBarProps> = ({ setResults, setPagination }) => {
-  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [releaseTitle, setReleaseTitle] = useState<string>("");
+  const [barcode, setBarcode] = useState<string>("");
+  const [artist, setArtist] = useState<string>("");
   const discogsToken: string = "HWiFdStcHwaqgBqEAoEjjvCFhQUNnZHqZFuelXuZ";
   const baseEndpoint: string = "https://api.discogs.com/database/search";
 
@@ -16,7 +18,9 @@ const SearchBar: React.FC<SearchBarProps> = ({ setResults, setPagination }) => {
         },
         params: {
           token: discogsToken,
-          release_title: searchTerm
+          release_title: releaseTitle,
+          barcode: barcode,
+          artist: artist
         }
       })
       .then((response: AxiosResponse<ApiResponseSubset>) => {
@@ -32,11 +36,29 @@ const SearchBar: React.FC<SearchBarProps> = ({ setResults, setPagination }) => {
       <input
         type="text"
         placeholder="Search by release title"
-        value={searchTerm}
+        value={releaseTitle}
         onKeyUp={(e) => {
           if (e.key === "Enter") doSearch();
         }}
-        onChange={(e) => setSearchTerm(e.target.value)}
+        onChange={(e) => setReleaseTitle(e.target.value)}
+      />
+      <input
+        type="text"
+        placeholder="Search by barcode"
+        value={barcode}
+        onKeyUp={(e) => {
+          if (e.key === "Enter") doSearch();
+        }}
+        onChange={(e) => setBarcode(e.target.value)}
+      />
+      <input
+        type="text"
+        placeholder="Search by artist"
+        value={artist}
+        onKeyUp={(e) => {
+          if (e.key === "Enter") doSearch();
+        }}
+        onChange={(e) => setArtist(e.target.value)}
       />
       <Button
         text="Try!"
