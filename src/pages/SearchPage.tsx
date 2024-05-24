@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PaginationBar from "../components/PaginationBar";
 import RecordCard from "../components/RecordCard";
 import SearchBar from "../components/SearchBar";
 
@@ -12,7 +13,7 @@ const SearchPage = () => {
         setPagination={setPagination}
         setResults={setResults}
       />
-      <div className="grid grid-cols-6 gap-4 md:grid-cols-4 sm:grid-cols-2">
+      <div className="mt-4 grid grid-cols-6 gap-4 md:grid-cols-4 sm:grid-cols-2">
         {results.map((result: Result) => {
           return (
             <RecordCard
@@ -22,6 +23,7 @@ const SearchPage = () => {
           );
         })}
       </div>
+      <PaginationBar {...pagination} />
     </div>
   );
 };
