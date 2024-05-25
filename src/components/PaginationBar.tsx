@@ -1,4 +1,11 @@
-const PaginationBar = (pagination: Pagination) => {
+import Button from "./Button";
+
+type PaginationBarProps = {
+  pagination: Pagination;
+  actionFunction: (params?: searchParams, endpoint?: string) => void;
+};
+
+const PaginationBar = ({ pagination, actionFunction }: PaginationBarProps) => {
   console.log(pagination);
   return (
     <div>
@@ -8,8 +15,18 @@ const PaginationBar = (pagination: Pagination) => {
       <p>{pagination.items} items found</p>
       {pagination.urls ? (
         <div className="flex">
-          <a href={pagination.urls.last}>Last</a>
-          <a href={pagination.urls.next}>Next</a>
+          <Button
+            text="Next Page"
+            actionFunction={() =>
+              actionFunction(undefined, pagination.urls.next)
+            }
+          />
+          <Button
+            text="Last Page"
+            actionFunction={() =>
+              actionFunction(undefined, pagination.urls.last)
+            }
+          />
         </div>
       ) : (
         <p>No results yet</p>

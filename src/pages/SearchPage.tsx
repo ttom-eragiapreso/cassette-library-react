@@ -7,11 +7,25 @@ import SearchBar from "../components/SearchBar";
 const SearchPage = () => {
   const [results, setResults] = useState<Result[]>([]);
   const [pagination, setPagination] = useState<Pagination>({} as Pagination);
-  const discogsToken = "HWiFdStcHwaqgBqEAoEjjvCFhQUNnZHqZFuelXuZ";
-  const baseEndpoint = `https://api.discogs.com/database/search?token=${discogsToken}&release_title=${releaseTitle}&barcode=${barcode}&artist=${artist}`;
-  const doSearch = (endpoint?: string): void => {
+  const discogsToken: string = "HWiFdStcHwaqgBqEAoEjjvCFhQUNnZHqZFuelXuZ";
+
+  function getOrCreateUrl(
+    discogsToken: string,
+    params?: searchParams,
+    endpoint?: string
+  ): string {
+    if (endpoint) return endpoint;
+    if (params) {
+      const { releaseTitle, barcode, artist } = params;
+      return `https://api.discogs.com/database/search?token=${discogsToken}&release_title=${releaseTitle}&barcode=${barcode}&artist=${artist}`;
+    }
+    console.error("No search parameters or endpoint provided");
+    throw new Error("No search parameters or endpoint provided");
+  }
+
+  const doSearch = (params?: searchParams, endpoint?: string): void => {
     axios
-      .get<ApiResponseSubset>(endpoint || baseEndpoint, {
+      .get<ApiResponseSubset>(getOrCreateUrl(discogsToken, params, endpoint), {
         headers: {
           "User-Agent": "foo/3.0"
         }
@@ -37,21 +51,11 @@ const SearchPage = () => {
           );
         })}
       </div>
-      <PaginationBar {...pagination} />
+      <PaginationBar
+        pagination={pagination}
+        actionFunction={doSearch}
+      />
     </div>
   );
 };
 export default SearchPage;
-
-function getOrCreateUrl(
-  discogsToken: string,
-  params?: searchParams,
-  endpoint?: string
-): string {
-  if (endpoint) return endpoint;
-  if (params) {
-    const { releaseTitle, barcode, artist } = params;
-    return `https://api.discogs.com/database/search?token=${discogsToken}&release_title=${releaseTitle}&barcode=${barcode}&artist=${artist}`;
-  }
-  throw new Error("No search parameters or endpoint provided");
-}

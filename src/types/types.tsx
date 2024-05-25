@@ -28,7 +28,7 @@ type ApiResponseSubset = {
 interface SearchBarProps {
   // setResults: React.Dispatch<React.SetStateAction<Result[]>>;
   // setPagination: React.Dispatch<React.SetStateAction<Pagination>>;
-  doSearch: (endpoint?: string) => void;
+  doSearch: (params?: searchParams, endpoint?: string) => void;
 }
 
 type searchParams = {

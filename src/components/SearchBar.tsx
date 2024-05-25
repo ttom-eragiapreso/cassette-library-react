@@ -14,7 +14,12 @@ const SearchBar: React.FC<SearchBarProps> = ({ doSearch }) => {
         placeholder="Search by release title"
         value={releaseTitle}
         onKeyUp={(e) => {
-          if (e.key === "Enter") doSearch();
+          if (e.key === "Enter")
+            doSearch({
+              releaseTitle,
+              barcode,
+              artist
+            });
         }}
         onChange={(e) => setReleaseTitle(e.target.value)}
       />
@@ -23,7 +28,12 @@ const SearchBar: React.FC<SearchBarProps> = ({ doSearch }) => {
         placeholder="Search by barcode"
         value={barcode}
         onKeyUp={(e) => {
-          if (e.key === "Enter") doSearch();
+          if (e.key === "Enter")
+            doSearch({
+              releaseTitle,
+              barcode,
+              artist
+            });
         }}
         onChange={(e) => setBarcode(e.target.value)}
       />
@@ -32,7 +42,12 @@ const SearchBar: React.FC<SearchBarProps> = ({ doSearch }) => {
         placeholder="Search by artist"
         value={artist}
         onKeyUp={(e) => {
-          if (e.key === "Enter") doSearch();
+          if (e.key === "Enter")
+            doSearch({
+              releaseTitle,
+              barcode,
+              artist
+            });
         }}
         onChange={(e) => setArtist(e.target.value)}
       />
@@ -40,7 +55,9 @@ const SearchBar: React.FC<SearchBarProps> = ({ doSearch }) => {
         text="Try!"
         icon={<FaSearch />}
         iconPosition="after"
-        actionFunction={doSearch}
+        actionFunction={() =>
+          doSearch({ releaseTitle, barcode, artist }, undefined)
+        }
       />
     </div>
   );
