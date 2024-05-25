@@ -1,36 +1,12 @@
-import axios, { AxiosResponse } from "axios";
 import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import Button from "./Button";
 
-const SearchBar: React.FC<SearchBarProps> = ({ setResults, setPagination }) => {
+const SearchBar: React.FC<SearchBarProps> = ({ doSearch }) => {
   const [releaseTitle, setReleaseTitle] = useState<string>("");
   const [barcode, setBarcode] = useState<string>("");
   const [artist, setArtist] = useState<string>("");
-  const discogsToken: string = "HWiFdStcHwaqgBqEAoEjjvCFhQUNnZHqZFuelXuZ";
-  const baseEndpoint: string = "https://api.discogs.com/database/search";
 
-  const doSearch = (): void => {
-    axios
-      .get<ApiResponseSubset>(baseEndpoint, {
-        headers: {
-          "User-Agent": "foo/3.0"
-        },
-        params: {
-          token: discogsToken,
-          release_title: releaseTitle,
-          barcode: barcode,
-          artist: artist
-        }
-      })
-      .then((response: AxiosResponse<ApiResponseSubset>) => {
-        setResults(response.data.results);
-        setPagination(response.data.pagination);
-      })
-      .catch((error: any) => {
-        console.log(error);
-      });
-  };
   return (
     <div className="border-2 border-red-500 flex">
       <input

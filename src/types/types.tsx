@@ -26,6 +26,13 @@ type ApiResponseSubset = {
 };
 
 interface SearchBarProps {
-  setResults: React.Dispatch<React.SetStateAction<Result[]>>;
-  setPagination: React.Dispatch<React.SetStateAction<Pagination>>;
+  // setResults: React.Dispatch<React.SetStateAction<Result[]>>;
+  // setPagination: React.Dispatch<React.SetStateAction<Pagination>>;
+  doSearch: (endpoint?: string) => void;
 }
+
+type searchParams = {
+  releaseTitle: string;
+  barcode: string;
+  artist: string;
+};
