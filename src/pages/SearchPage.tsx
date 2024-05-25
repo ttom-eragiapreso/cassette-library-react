@@ -31,9 +31,10 @@ const SearchPage = () => {
         }
       })
       .then((response: AxiosResponse<ApiResponseSubset>) => {
-        console.log(response)
-        setResults(response.data.results.filter((result: Result) => {
-          return result.type === "release"}));
+        const filteredResults = response.data.results.filter((result: Result) => {
+          return result.type === "release";
+        })
+        setResults(filteredResults);
         setPagination(response.data.pagination);
       })
       .catch((error: any) => {

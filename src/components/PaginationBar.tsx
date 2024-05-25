@@ -9,8 +9,7 @@ const PaginationBar = ({ pagination, actionFunction }: PaginationBarProps) => {
   return (
     <div>
       {pagination.pages && (<>
-        <p>Page {pagination.page} of {pagination.pages}</p>
-        <p>{pagination.items} items found</p>
+        <p>Page {pagination.page} of {pagination.pages} for {pagination.items} items found</p>
       </>)}
       {pagination.urls && (
         <div className="flex">
