@@ -31,7 +31,9 @@ const SearchPage = () => {
         }
       })
       .then((response: AxiosResponse<ApiResponseSubset>) => {
-        setResults(response.data.results);
+        console.log(response)
+        setResults(response.data.results.filter((result: Result) => {
+          return result.type === "release"}));
         setPagination(response.data.pagination);
       })
       .catch((error: any) => {
@@ -45,7 +47,7 @@ const SearchPage = () => {
         {results.map((result: Result) => {
           return (
             <RecordCard
-              key={result.id}
+              key={result.id + result.title + result.type}
               {...result}
             />
           );

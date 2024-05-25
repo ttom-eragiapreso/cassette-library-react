@@ -5,10 +5,16 @@ type NavLinkPropsSimple = {
 
 type Result = {
   id: number;
+  type: string;
   title: string;
   year: string;
   country: string;
   thumb: string;
+  cover_image: string;
+  resource_url: string;
+  label: Array<string>;
+  genre: Array<string>;
+  style: Array<string>;
 };
 
 type Pagination = {

@@ -7,9 +7,29 @@ const RecordCard: React.FC<Result> = (result) => {
       <p className="text-gray-600 mb-2">{result.country}</p>
       <p className="text-gray-600">{result.year}</p>
       <img
-        src={result.thumb}
+        src={result.cover_image ? result.cover_image : result.thumb}
         alt={result.title}
       />
+      {result.label && (
+        <>
+          <p className="font-bold">Labels</p>
+          <ul>
+            {result.label.map((label: string) => (
+              <li key={label}>{label}</li>
+            ))}
+          </ul>
+        </>
+    )}
+      {result.style && (
+        <>
+          <p className="font-bold">Styles</p>
+          <ul>
+            {result.style.map((style: string) => (
+              <li key={style}>{style}</li>
+            ))}
+          </ul>
+        </>
+    )}
     </div>
   );
 };

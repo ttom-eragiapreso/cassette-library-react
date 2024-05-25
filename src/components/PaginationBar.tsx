@@ -6,13 +6,12 @@ type PaginationBarProps = {
 };
 
 const PaginationBar = ({ pagination, actionFunction }: PaginationBarProps) => {
-  console.log(pagination);
   return (
     <div>
-      <p>
-        Page {pagination.page} of {pagination.pages}
-      </p>
-      <p>{pagination.items} items found</p>
+      {pagination.pages && (<>
+        <p>Page {pagination.page} of {pagination.pages}</p>
+        <p>{pagination.items} items found</p>
+      </>)}
       {pagination.urls && (
         <div className="flex">
           {pagination.urls.first && (
