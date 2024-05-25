@@ -16,7 +16,7 @@ type Pagination = {
   pages: number;
   per_page: number;
   items: number;
-  urls: { last: string; next: string };
+  urls: { last?: string; next?: string; first?: string; prev?: string };
 };
 
 type ApiResponseSubset = {

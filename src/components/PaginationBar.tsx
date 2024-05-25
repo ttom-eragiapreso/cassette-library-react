@@ -13,23 +13,41 @@ const PaginationBar = ({ pagination, actionFunction }: PaginationBarProps) => {
         Page {pagination.page} of {pagination.pages}
       </p>
       <p>{pagination.items} items found</p>
-      {pagination.urls ? (
+      {pagination.urls && (
         <div className="flex">
-          <Button
-            text="Next Page"
-            actionFunction={() =>
-              actionFunction(undefined, pagination.urls.next)
-            }
-          />
-          <Button
-            text="Last Page"
-            actionFunction={() =>
-              actionFunction(undefined, pagination.urls.last)
-            }
-          />
+          {pagination.urls.first && (
+            <Button
+              text="First Page"
+              actionFunction={() =>
+                actionFunction(undefined, pagination.urls.first)
+              }
+            />
+          )}
+          {pagination.urls.next && (
+            <Button
+              text="Next Page"
+              actionFunction={() =>
+                actionFunction(undefined, pagination.urls.next)
+              }
+            />
+          )}
+          {pagination.urls.prev && (
+            <Button
+              text="Previous Page"
+              actionFunction={() =>
+                actionFunction(undefined, pagination.urls.prev)
+              }
+            />
+          )}
+          {pagination.urls.last && (
+            <Button
+              text="Last Page"
+              actionFunction={() =>
+                actionFunction(undefined, pagination.urls.last)
+              }
+            />
+          )}
         </div>
-      ) : (
-        <p>No results yet</p>
       )}
     </div>
   );
