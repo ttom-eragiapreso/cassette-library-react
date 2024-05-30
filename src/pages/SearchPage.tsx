@@ -7,17 +7,15 @@ import SearchBar from "../components/SearchBar";
 const SearchPage = () => {
   const [results, setResults] = useState<Result[]>([]);
   const [pagination, setPagination] = useState<Pagination>({} as Pagination);
-  const discogsToken: string = "HWiFdStcHwaqgBqEAoEjjvCFhQUNnZHqZFuelXuZ";
 
   function getOrCreateUrl(
-    discogsToken: string,
     params?: searchParams,
     endpoint?: string
   ): string {
     if (endpoint) return endpoint;
     if (params) {
       const { releaseTitle, barcode, artist } = params;
-      return `https://api.discogs.com/database/search?token=${discogsToken}&release_title=${releaseTitle}&barcode=${barcode}&artist=${artist}`;
+      return `http://localhost:8080/api-discogs?release_title=${releaseTitle}&barcode=${barcode}&artist=${artist}`;
     }
     console.error("No search parameters or endpoint provided");
     throw new Error("No search parameters or endpoint provided");
@@ -25,16 +23,9 @@ const SearchPage = () => {
 
   const doSearch = (params?: searchParams, endpoint?: string): void => {
     axios
-      .get<ApiResponseSubset>(getOrCreateUrl(discogsToken, params, endpoint), {
-        headers: {
-          "User-Agent": "foo/3.0"
-        }
-      })
+      .get<ApiResponseSubset>(getOrCreateUrl(params, endpoint))
       .then((response: AxiosResponse<ApiResponseSubset>) => {
-        const filteredResults = response.data.results.filter((result: Result) => {
-          return result.type === "release";
-        })
-        setResults(filteredResults);
+        setResults(response.data.results);
         setPagination(response.data.pagination);
       })
       .catch((error: any) => {
